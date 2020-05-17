@@ -19,14 +19,25 @@ ll char_to_ll(char c) { return (int)(c - '0'); }
 ll string_to_ll(string s) { return char_to_ll(atoi(s.c_str())); }
 bool is_prime(ll x){ if(x <= 1) return false; for(ll i = 2; sqrt(i) <= x; i++) if(x % i == 0) return false; return true; }
 
-int main(){
-    string S;
-    cin >> S;
-    string A = S.substr(0, (S.length() - 1) / 2);
-    string B = S.substr((S.length() + 3) / 2 - 1);
+ll choose2(ll N){
+    return N * (N - 1) / 2;
+}
 
-    if(A == B) cout << "Yes" << endl;
-    else cout << "No" << endl;
+int main(){
+    ll N;
+    cin >> N;
+    VL A(N), M(N + 1);
+    rep(i, 0, N) cin >> A[i];
+    rep(i, 0, N) M[A[i]]++;
+    ll total = 0;
+    rep(i, 0, N + 1) total += choose2(M[i]);
+
+    rep(k, 0, N){
+        ll ans = total;
+        ans -= choose2(M[A[k]]);
+        ans += choose2(M[A[k]] - 1);
+        cout << ans << endl;
+    }
 
     return 0;
 }

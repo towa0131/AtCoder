@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define MOD 100000007
+#define MOD 1000000007
 #define PI 3.141592653589793238
 #define pb push_back
 #define ALL(V) (V).begin(), (V).end()
@@ -31,6 +31,6 @@ int main(){
 
     if(A && B) cout << "Yes" << endl;
     else cout << "No" << endl;
-    
+
     return 0;
 }
